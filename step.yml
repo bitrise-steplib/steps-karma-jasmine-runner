@@ -1,0 +1,29 @@
+title: Karma Jasmine Test Runner
+summary: Karma Jasmine Test Runner
+description: Karma Jasmine Test Runner
+website: https://github.com/bitrise-steplib/steps-karma-jasmine-runner
+source_code_url: https://github.com/bitrise-steplib/steps-karma-jasmine-runner
+support_url: https://github.com/bitrise-steplib/steps-karma-jasmine-runner/issues
+project_type_tags:
+  - cordova
+type_tags:
+  - build
+deps:
+  brew:
+  - name: go
+toolkit:
+  go:
+    package_name: github.com/bitrise-steplib/steps-karma-jasmine-runner
+inputs:
+  - workdir: $BITRISE_SOURCE_DIR
+    opts:
+      title: "Working directory"
+      summary: ""
+      description: ""
+  - options:
+    opts:
+      title: "options to append to the karma start command"
+      description: |-
+        Use this input to specify custom options, to append to the end of the karma start command.
+
+        `karma start --single-run [options]`
