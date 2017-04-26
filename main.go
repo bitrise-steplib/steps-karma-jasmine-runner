@@ -104,7 +104,7 @@ func main() {
 	fmt.Println()
 	log.Infof("Running karma-jasmine tests")
 
-	cmd := command.New("karma", "start", "--single-run")
+	cmd := command.New(karmaBinPth, "start", "--single-run")
 	cmd.SetStdout(os.Stdout)
 	cmd.SetStderr(os.Stderr)
 
