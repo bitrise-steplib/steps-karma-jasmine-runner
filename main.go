@@ -4,9 +4,8 @@ import (
 	"fmt"
 	"os"
 	"os/exec"
-	"strings"
-
 	"path/filepath"
+	"strings"
 
 	"github.com/bitrise-io/go-utils/command"
 	"github.com/bitrise-io/go-utils/log"
