@@ -22,7 +22,7 @@ inputs:
       description: ""
   - options:
     opts:
-      title: "options to append to the karma start command"
+      title: "Options to append to the karma start command"
       description: |-
         Use this input to specify custom options, to append to the end of the karma start command.
 

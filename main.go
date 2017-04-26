@@ -35,7 +35,7 @@ func (configs ConfigsModel) print() {
 
 func (configs ConfigsModel) validate() error {
 	if err := input.ValidateIfDirExists(configs.WorkDir); err != nil {
-		return fmt.Errorf("Issue with WorkDir: %s", err)
+		return fmt.Errorf("WorkDir: %s", err)
 	}
 
 	return nil
