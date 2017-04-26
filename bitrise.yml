@@ -36,6 +36,8 @@ workflows:
         - clone_depth: ""
     - path::./:
         title: Step Test
+        inputs:
+        - options: --browsers Safari
 
   go-tests:
     before_run:

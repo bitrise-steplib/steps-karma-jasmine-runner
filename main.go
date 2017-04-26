@@ -11,6 +11,7 @@ import (
 	"github.com/bitrise-io/go-utils/log"
 	"github.com/bitrise-io/go-utils/pathutil"
 	"github.com/bitrise-tools/go-steputils/input"
+	shellquote "github.com/kballard/go-shellquote"
 )
 
 // ConfigsModel ...
@@ -71,7 +72,6 @@ func main() {
 		fail("Failed to expand WorkDir (%s), error: %s", configs.WorkDir, err)
 	}
 
-	// ./node_modules/.bin/karma
 	karmaBinPth := filepath.Join(workDir, "node_modules", ".bin", "karma")
 	if exist, err := pathutil.IsPathExists(karmaBinPth); err != nil {
 		fail("Failed to check if karma bin exist at: %s, error: %s", karmaBinPth, err)
@@ -103,7 +103,18 @@ func main() {
 	fmt.Println()
 	log.Infof("Running karma-jasmine tests")
 
-	cmd := command.New(karmaBinPth, "start", "--single-run")
+	cmdSlice := []string{karmaBinPth, "start", "--single-run"}
+
+	if configs.Options != "" {
+		options, err := shellquote.Split(configs.Options)
+		if err != nil {
+			fail("Failed to shell split Options (%s), error: %s", configs.Options, err)
+		}
+
+		cmdSlice = append(cmdSlice, options...)
+	}
+
+	cmd := command.New(cmdSlice[0], cmdSlice[1:]...)
 	cmd.SetStdout(os.Stdout)
 	cmd.SetStderr(os.Stderr)
 
