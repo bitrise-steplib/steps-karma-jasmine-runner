@@ -16,26 +16,33 @@ import (
 
 // ConfigsModel ...
 type ConfigsModel struct {
-	WorkDir string
-	Options string
+	WorkDir  string
+	Browsers string
+	Options  string
 }
 
 func createConfigsModelFromEnvs() ConfigsModel {
 	return ConfigsModel{
-		WorkDir: os.Getenv("workdir"),
-		Options: os.Getenv("options"),
+		WorkDir:  os.Getenv("workdir"),
+		Browsers: os.Getenv("browsers"),
+		Options:  os.Getenv("options"),
 	}
 }
 
 func (configs ConfigsModel) print() {
 	log.Infof("Configs:")
 	log.Printf("- WorkDir: %s", configs.WorkDir)
+	log.Printf("- Browsers: %s", configs.Browsers)
 	log.Printf("- Options: %s", configs.Options)
 }
 
 func (configs ConfigsModel) validate() error {
 	if err := input.ValidateIfDirExists(configs.WorkDir); err != nil {
 		return fmt.Errorf("WorkDir: %s", err)
+	}
+
+	if err := input.ValidateIfNotEmpty(configs.Browsers); err != nil {
+		return fmt.Errorf("Browsers: %s", err)
 	}
 
 	return nil
@@ -103,7 +110,7 @@ func main() {
 	fmt.Println()
 	log.Infof("Running karma-jasmine tests")
 
-	cmdSlice := []string{karmaBinPth, "start", "--single-run"}
+	cmdSlice := []string{karmaBinPth, "start", "--single-run", "--browsers", configs.Browsers}
 
 	if configs.Options != "" {
 		options, err := shellquote.Split(configs.Options)
@@ -117,6 +124,7 @@ func main() {
 	cmd := command.New(cmdSlice[0], cmdSlice[1:]...)
 	cmd.SetStdout(os.Stdout)
 	cmd.SetStderr(os.Stderr)
+	cmd.SetDir(workDir)
 
 	log.Donef("$ %s", cmd.PrintableCommandArgs())
 
