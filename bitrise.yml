@@ -37,7 +37,7 @@ workflows:
     - path::./:
         title: Step Test
         inputs:
-        - options: --browsers Safari
+        - browsers: Safari
 
   go-tests:
     before_run:
