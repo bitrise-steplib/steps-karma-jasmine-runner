@@ -19,7 +19,7 @@ inputs:
     opts:
       title: "Working directory"
       is_required: true
-  - browsers: Safary
+  - browsers: Safari
     opts:
       title: "List of browsers to start"
       description: |-
