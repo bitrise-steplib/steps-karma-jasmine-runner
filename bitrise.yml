@@ -24,14 +24,6 @@ workflows:
         inputs:
         - path: ./_tmp
         - is_create_path: true
-    - script:
-        inputs:
-        - content: |-
-            #!/bin/bash
-            set -e
-            git branch --set-upstream-to=origin/master master
-            git pull --allow-unrelated-histories
-            git push origin master
     - git-clone:
         run_if: true
         inputs:
