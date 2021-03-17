@@ -32,7 +32,7 @@ workflows:
       - path::./:
           title: Step Test
           inputs:
-            - browsers: Safari
+            - browsers: Chrome
 
   go-tests:
     steps:
