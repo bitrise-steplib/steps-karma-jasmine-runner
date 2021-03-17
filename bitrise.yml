@@ -18,6 +18,9 @@ workflows:
                 set -e
                 set -v
                 rm -rf ./_tmp
+
+                # Install Chrome
+                brew cask install google-chrome
       - change-workdir:
           title: Switch working dir to ./_tmp dir
           run_if: true
