@@ -1,6 +1,22 @@
 title: Karma Jasmine Test Runner
-summary: Karma Jasmine Test Runner
-description: Karma Jasmine Test Runner
+summary: Run your Jasmine tests with the Karma tool on Bitrise. 
+description: |-
+  The Step allows you to run Jasmine tests using the Karma tool in your build. Karma lets you spawn different browsers and re-run the tests within each browser. 
+
+  ### Configuring the Step 
+  
+  The Step runs the `karma start` command to run your Jasmine tests. To set this up:
+  
+  1. Choose the browsers in which you want to run tests. Separate each browser with a comma. 
+  1. In the **Options to append to the karma start command**, add custom options to the `karma start` command. For the available options, run `karma start --help` in a command line. 
+  
+  ### Useful links 
+  
+  [Testing on Bitrise](devcenter.bitrise.io/testing/)
+  
+  ### Related Steps 
+  
+  [Jasmine Test Runner](https://www.bitrise.io/integrations/steps/jasmine-runner)
 website: https://github.com/bitrise-community/steps-karma-jasmine-runner
 source_code_url: https://github.com/bitrise-community/steps-karma-jasmine-runner
 support_url: https://github.com/bitrise-community/steps-karma-jasmine-runner/issues
